@@ -4,7 +4,7 @@ Este é um projeto desenvolvido em **C++** que funciona como uma ferramenta para
 
 A ferramenta permite desenhar e apagar estruturas geométricas na matriz e, ao final, exportar o resultado para um arquivo no formato **.OFF**, que pode ser aberto em softwares de visualização 3D.
 
-Nesta primeira etapa, o projeto contém exemplos de modelagem geométrica processual, incluindo a criação de uma **Árvore com Paisagem** e uma **Espada**.
+Nesta primeira etapa, o projeto contém exemplos de modelagem geométrica processual, incluindo a criação de uma **Árvore com Paisagem**.
 
 ## 🛠️ Pré-requisitos
 
