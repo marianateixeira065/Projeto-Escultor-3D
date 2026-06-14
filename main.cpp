@@ -3,24 +3,20 @@
 
 
 int main() {
-    // 1. O seu espaço 3D gigante (80x80x80)
+    
     Sculptor cena(80, 80, 80);
 
     // 2. O Chão de Grama (Cor: Verde Claro)
-    // Desenhamos a grama primeiro para não sobrepor o tronco
     cena.setColor(0.4, 0.8, 0.1, 1.0);
     cena.putBox(0, 79, 0, 0, 0, 79);
 
-    // 3. O Lago Orgânico Gigante e Diagonal (Cor: Azul Água)
+    // 3. O Lago (Cor: Azul Água)
     cena.setColor(0.1, 0.5, 0.9, 1.0);
-    // Corpo principal do lago (bem largo no eixo X e Z)
     cena.putEllipsoid(52, 1, 60, 18, 1, 12); 
-    // Curva esticando para o canto inferior esquerdo
     cena.putEllipsoid(66, 1, 68, 8, 1, 10);  
-    // Curva esticando na diagonal em direção ao centro (para a 1 bloco da árvore!)
     cena.putEllipsoid(40, 1, 52, 14, 1, 8);
 
-    // 3. O Tronco da Árvore Centralizado (Cor: Marrom)
+    // 3. O Tronco da Árvore  (Cor: Marrom)
     cena.setColor(0.4, 0.2, 0.0, 1.0);
     // Para centralizar no 40, fazemos o tronco ir de 37 a 43 no eixo X e no eixo Z.
     // Começa no Y=1 (para ficar em cima da grama) e vai até Y=20.
@@ -30,7 +26,7 @@ int main() {
     cena.setColor(0.0, 0.6, 0.2, 1.0);
     // Colocamos o centro exato da elipsoide no X=40 e Z=40.
     // O Y=25 mantém a copa encaixada no topo do tronco.
-    cena.putEllipsoid(27, 25, 27, 16, 12, 16); // Aumentei um pouco os raios para ficar mais frondosa!
+    cena.putEllipsoid(27, 25, 27, 16, 12, 16);
 
     // 5. O Sol Gigante (Cor: Amarelo)
     cena.setColor(0.99, 0.99, 0.0, 1.0);
@@ -38,27 +34,27 @@ int main() {
     // para aproveitar a altura da sua nova matriz de 80 blocos!
     cena.putSphere(65, 60, 10, 12);
 
+    // Nuvens 
     cena.setColor(0.99, 0.99, 0.99, 1.0); 
-    for(int i = 0; i < 6; i++) {
-        int x = rand() % 80;        
-        int z = rand() % 80;        
-        int y = 45 + (rand() % 30); 
-        cena.putEllipsoid(x, y, z, 7, 2, 8); 
-    }
+    cena.putEllipsoid(20, 50, 20, 7, 2, 8);
+    cena.putEllipsoid(60, 65, 30, 7, 2, 8);
+    cena.putEllipsoid(15, 55, 60, 7, 2, 8);
+    cena.putEllipsoid(45, 48, 70, 7, 2, 8);
+    cena.putEllipsoid(70, 60, 70, 7, 2, 8);
+    cena.putEllipsoid(30, 70, 10, 7, 2, 8);
 
-    // 3. O Fundo do Céu estilo Diorama (Cor: Azul Celeste)
-    // Usamos 0.99 no azul para garantir a leitura correta e alfa 1.0 (sólido)
+    // 3. Céu (Cor: Azul Celeste)
     cena.setColor(0.5, 0.8, 0.99, 1.0);
     
     // Parede do Fundo (Z = 0) - Fica atrás do sol e da árvore
     cena.putBox(0, 79, 1, 79, 0, 0);
     
-    // Parede da Esquerda (X = 0) - Cria um canto que dá noção de profundidade
+    // Parede da Esquerda (X = 0) 
     cena.putBox(0, 0, 1, 79, 0, 79);
     // 6. Gravando a escultura final no formato OFF
     cena.writeOFF("arvore.off");
 
-    std::cout << "Cena da arvore centralizada gerada com sucesso!" << std::endl;
+    std::cout << "Cena da arvore gerada com sucesso!" << std::endl;
 
     return 0;
 }
